@@ -1,0 +1,68 @@
+#Welcome every one
+#Here we go through some basics we took earlier in this cours
+
+# what is programming??
+#long story short programming is writing computer programs or in more specific description, it is the process of solving problems by giving
+#computers commands to solve problems.
+
+#enough for beginers talks
+
+#since this course is dedicated to learn python for web development using Django web framework we are not going to discuss all of python stuff.
+
+# a recovery of what we discussed so far:
+
+#Variables in python:
+#x=2
+#y="hello"
+
+# Data Types:
+# -Integers
+# -float
+# -Char
+# -Strings
+# -Boolean
+ 
+# Data structures:
+# - Lists (ex. my_list=['Dad','mom','sister'],my_list2=[2,3,2.3])
+# a list is a collection of arbitrary objects, somewhat akin to an array in many other programming languages but more flexible. 
+#Lists are defined in Python by enclosing a comma-separated sequence of objects in square brackets (realpython.com)
+
+# - dictionaries (ex. my_dict={"hello":"hello","world":"world"})
+# Dictionaries are Python’s implementation of a data structure that is more generally known as an associative array.
+# A dictionary consists of a collection of key-value pairs.
+# Each key-value pair maps the key to its associated value. (realpython.com)
+
+# functions:
+# def my_function():
+    print("hello world")
+
+#A function is a block of code which only runs when it is called.
+
+#You can pass data, known as parameters, into a function.
+
+#A function can return data as a result. (w3school.com)
+
+
+
+
+# classes:
+# class MyClass():
+#   x=4
+#  def __init__(self,name):
+        self.name=name
+        
+        
+#Classes are used to create new user-defined data structures that contain arbitrary information about something. In the case of an animal, we could create an Animal() class to track properties about the Animal like the name and age.
+
+#It’s important to note that a class just provides structure—it’s a blueprint for how something should be defined, but it doesn’t actually provide any real content itself. The Animal() class may specify that the name and age are necessary for defining an animal, but it will not actually state what a specific animal’s name or age is.
+
+#It may help to think of a class as an idea for how something should be defined.
+
+
+
+"""
+useful resources to learn python:
+https://realpython.com
+https://www.youtube.com/user/CodingEntrepreneurs
+
+"""
