@@ -1,0 +1,59 @@
+# in this walkthrough we will demonstrate how to install and run django on your local machine
+
+# after making sure you have python on your local machine, open the command line and do the following:
+
+# - go to C directory as following:
+# cd \
+# you are supposed to be in the C directory
+# create a directory and call it whatever you want:
+# mkdir my_project
+# cd my_project
+
+# pip is a package management system used to install and manage software packages written in Python.
+# Many packages can be found in the default source for packages and their dependencies — Python Package Index (PyPI).
+
+# install virtualenv as following :
+
+# pip install virtualenv
+
+# virtualenv is a tool to create isolated Python environments. 
+# virtualenv creates a folder which contains all the necessary executables to use the packages that a Python project would need.
+
+# after installing virtualenv run the follwoing command in my_project directory:
+# virtualenv . 
+# notice that the (dot) is telling the virtualenv to create a virtual environment in the current directory which is 
+# in our example my_project
+# then activate the virtualenv with these commands in my_project directory:
+# cd Scripts
+# activate
+
+# leave the Scripts directory like this : cd ..
+
+# ============================================================
+
+# now lets install django on our local virtualenv:
+# pip install django
+# once its succefully installed django you can start developing cool websites.
+
+
+
+# =============================================================
+
+# now lets create a Django project
+# in my_project from the command line we need to create a django project as follwoing:
+# django-admin startproject my_django_project (you can name your project whatever you want)
+# the go to the directory of my_django_project like this : cd my_django_project
+# now we need to migrate the sqlite databse with this command: python manage.py migrate
+# after finishing migrations we need to create a super user (admin):
+# python manage.py createsuperuser 
+# it will ask you to specify username/email/password once your done it will display a message when it is succeful
+# lets run our project by the following commands to test that every thing is ok:
+# python manage.py runserver
+# once it is running, open any web browser and in the url bar go to the localhost: https://127.0.0.1:8000
+# a welcoming screen should appear indicating that you started the project succefully
+# you can go to https://127.0.0.1:8000/admin and login using the credintials we created with the createsuperuser command
+
+# useful resources:
+# https://docs.python-guide.org/dev/virtualenvs/
+# https://docs.djangoproject.com/en/2.1/topics/install/
+# https://docs.djangoproject.com/en/1.11/intro/tutorial01/
