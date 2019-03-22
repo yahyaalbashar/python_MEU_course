@@ -1,0 +1,158 @@
+"""
+previously in this course, we learned how to create a django project and how to create virtual environment for the project.
+
+no we are going to see how to create applications for our project.
+
+in this walk through we are going to breakdown the MVC(Model View Controller):
+- how to create an appllications.
+- how to build a database for the application(Model/models)
+- create the view(View)
+- link url to a view (Controller)
+- templates(html pages to render the data)
+
+==============================================
+first lets follow these steps to create an application:
+- after activating the virtualenv and navigating to the project directory where manage.py is located (as we took earlier)
+type the following command in the cmd:
+python manage.py startapp <name_of_your_app>
+
+* replace <name_of_your_app> with any proper name for your application and use underscores instead of spaces
+
+- next just to make sure our app is created type in the cmd the command  (dir if you are on windows) to make sure
+the app folder is created.
+
+- next open sublimetext or your text editor that you are using and got file ----> open folder go where your project is located and 
+open it.
+
+- on the left hand side of the sublime text you will find folders of our project. open the folder that is named as your project name
+that contains a file called settings.py
+
+- open settings.py and scroll until you see a list variable named INSTALLED_APPS. add your app name as a string 
+(make sure you write identically as you created it) an example is shown below:
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'name_of_your_app'
+    
+    ]
+  press control s to save your changes
+ ==============================================
+ 
+ - next open the folder named as the app name from the left hand side on the sublimetext, you should see a file named models.py open it.
+ - here we define the models or the a table for the database. in django we define database tables as classes in python.
+ 
+ create the following model with the following attributes(fields) and the __str__ method:
+ 
+ class Article(models.Model):
+      title=models.CharField(max_length=255)
+      body=models.TextField()
+      author=models.CharField(max_length=255)
+      
+      def __str__(self):
+          return self.title
+- then open the admin.py file to define the models on the admin site (you have to import the models form the models file)
+from name_of_your_app.models import Article
+
+class AdminArticle(admin.ModelAdmin):
+      class Meta:
+          model= Article
+          
+ admin.site.register(Article,AdminArticle)
+ 
+ - after that get back to the cmd and make sure you are inside the project directory where manage.py is located. and make the following:
+ python manage.py makemigrations
+ after it finishes:
+ python manage.py migrate
+ 
+ it should display that your migrations are ok
+ 
+ 
+ now lets write our first view, views are responsilbe to fetch objects (data) from the database, do some logic this data if needed
+ and render them on html pages
+ 
+ write a view, open the views.py inside the app directory from the sublime text:
+ 
+ lets make a view that is responsible for getting articles from the Articles model(table):
+from name_of_your_app.models import Article
+
+
+def chose_a_proper_name_for_the_view(request):
+    
+    articles_list=Article.objects.all()
+    # articles_list will bring all the articels in the Articles model
+    
+    context={
+            "articles_list":articles_list
+    }
+    #the above dictionarty will hold our data to be rendered in the template(page)
+    return render(request,"home.html",context)
+    
+    
+    now open urls.py file located in the project directory and create a url and link it to the view as following:
+    
+    from name_of_your_app.views import home
+    
+    # you should see a list varialble called urlpatterns as following, :
+   
+  urlpatterns = [
+      path(r'^admin/', admin.site.urls),
+    ]
+    
+    
+    you have to add a url to your view into that list as following:
+    
+    
+    path('articles/2003/', views.special_case_2003
+ 
+      urlpatterns = [
+      path(r'^admin/', admin.site.urls),
+      path('articles/', home),
+    ]
+    
+    save your changes and lets make a simple html page:
+    - right click on the app folder in sublimetext, create a new folder and name it templates
+    - next right click on the templates folder and create a new file and save it as home.html
+    - after creating home.html file in templates folder open it and write the following inside it:
+      
+      
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <title>hello world</title>
+      </head>
+      
+      <body>
+      
+      {% for article in articles list %}
+      <h1> {{article.title}}  </h1>
+      <p>{{article.body}} </p>
+      <br>
+      {% endfor %}
+      
+      </body>
+      
+      </html>
+    
+    
+    next go to the cmd and run the server as we learned before.
+    
+    then open your browser and go to http://127.0.0.1:8000/admin and login with your admin credintials
+    you will be directed to the admin site, you should find a sectioon called articels. click on it and create an article.
+    after creating an article go from the browser to http:// 127.0.0.1:8000/articles
+    
+    you should see your first created article on the page.
+    
+    create multiple articels and see them on the articles page appearing each time you create one.
+    
+    
+"""
+
+
+important resources:
+https://www.w3schools.com/html/
+https://www.djangoproject.com/
